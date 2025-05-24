@@ -39,6 +39,16 @@ def load_monster_data(part1_path="en_sqlout_1.csv", part2_path="en_sqlout_2.csv"
         axis=1,
     )
 
+    # Projected stats after completing HeavyCycles of training
+    df["ProjMain"] = df.apply(
+        lambda row: row["Pow"] + row["Pow gain"] * row["HeavyCycles"]
+        if row["MainStat"] == "Pow"
+        else row["Int"] + row["Int gain"] * row["HeavyCycles"],
+        axis=1,
+    )
+    df["ProjSkill"] = df["Ski"] + df["Ski gain"] * df["HeavyCycles"]
+    df["ProjSpeed"] = df["Spd"] + df["Spd gain"] * df["HeavyCycles"]
+
     return df
 
 
