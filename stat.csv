@@ -1,0 +1,18 @@
+﻿"If you publish information from this calculator, please link to and credit LegendCup.com",,,,,,,,,,,,,,,
+Monster ID,123,Durahan/Durahan,,,,,,,,,,,,,
+,,Lif,Pow,Int,Ski,Spd,Def,Lifespan,Offset,,,,,,
+,Base stats,100,150,80,110,70,180,400,Yes,,,,,,
+,,,,,,,,,,,,,,,
+,,Min,,,,,,,Max,,,,,,
+,Index,Lif,Pow,Int,Ski,Spd,Def,Lifespan,Lif,Pow,Int,Ski,Spd,Def,Lifespan
+Offset 1,39,0,-5,-3,-2,0,0,0,10,0,0,0,18,11,10
+Offset 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,Total offset,0,-5,-3,-2,0,0,0,10,0,0,0,18,11,10
+,Starting stats,100,145,77,108,70,180,400,110,150,80,110,88,191,410
+,,,,,,,,,,,,,,,
+Title,Chasing the Dream,,,,,,,,,,,,,,
+Artist,Alex Kassel,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+"If Title and Artist are ""#N/A"" it means that no Title or Artist exist with the chosen Offset 1 and Offset 2 values.",,,,,,,,,,,,,,,
+"If Offset is ""Yes"" you can use a number between 0 and 59 in each Offset index.",,,,,,,,,,,,,,,
+"If Offset is ""No"" the Min/Max ranges can be ignored as they will not be applied.",,,,,,,,,,,,,,,
