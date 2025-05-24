@@ -19,11 +19,11 @@ def score_for_offsets(offset1, offset2, base_stats, gains, guts_rate, offset_max
     return score
 
 
-def load_kamui_data():
-    """Load base stats for monster ID 977 and offset tables."""
-    monster_df = pd.read_csv('sdata_monster.csv')
-    monster_df.rename(columns={'Lifespan\n': 'Lifespan'}, inplace=True)
-    row = monster_df[monster_df['Monster ID'] == 977].iloc[0]
+def load_monster_data(monster_id: int):
+    """Load base stats for the given monster ID and offset tables."""
+    monster_df = pd.read_csv("sdata_monster.csv")
+    monster_df.rename(columns={"Lifespan\n": "Lifespan"}, inplace=True)
+    row = monster_df[monster_df["Monster ID"] == monster_id].iloc[0]
     base_stats = row[['Lif', 'Pow', 'Int', 'Ski', 'Spd', 'Def', 'Lifespan']].to_numpy(dtype=float)
     gains = row[['Pow gain', 'Int gain', 'Ski gain', 'Spd gain']].to_numpy(dtype=float)
     guts_rate = row['Guts Rate']
@@ -37,8 +37,14 @@ def load_kamui_data():
 
 
 def main():
-    base_stats, gains, guts_rate, offset_max = load_kamui_data()
-    entries = pd.read_csv('977.csv')
+    monster_id = 1056
+    base_stats, gains, guts_rate, offset_max = load_monster_data(monster_id)
+    # Reading with low_memory=False avoids dtype warnings on large files
+    entries = pd.read_csv(f"{monster_id}.csv", low_memory=False)
+    # Drop rows without offset information and convert to integers
+    entries = entries.dropna(subset=["Offset 1", "Offset 2"])
+    entries["Offset 1"] = entries["Offset 1"].astype(int)
+    entries["Offset 2"] = entries["Offset 2"].astype(int)
 
     scores = []
     for _, row in entries.iterrows():
