@@ -49,6 +49,16 @@ def load_monster_data(part1_path="en_sqlout_1.csv", part2_path="en_sqlout_2.csv"
     df["ProjSkill"] = df["Ski"] + df["Ski gain"] * df["HeavyCycles"]
     df["ProjSpeed"] = df["Spd"] + df["Spd gain"] * df["HeavyCycles"]
 
+    # Calculate a single score used for ranking monsters in a speedrun
+    # Replace zero guts rates with 20 to avoid division by zero
+    df["SafeGutsRate"] = df["Guts Rate"].replace(0, 20)
+
+    df["Score"] = (
+        (0.5 * df["ProjMain"] + 0.3 * df["ProjSkill"] + 0.2 * df["ProjSpeed"])
+        * (20 / df["SafeGutsRate"])
+        / df["WeeksAvail"]
+    )
+
     return df
 
 
