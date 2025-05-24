@@ -1,0 +1,18 @@
+# Core numerical & data-processing stack
+numpy>=1.26,<2.0
+pandas>=2.2,<3.0
+
+# Excel export for ranked-list deliverables
+openpyxl>=3.1,<4.0
+
+# YAML-based config parsing
+pyyaml>=6.0,<7.0
+
+# Plotting (score distributions, sanity-check visuals)
+matplotlib>=3.8,<4.0
+
+# Interactive exploration / reproducible notebook
+jupyterlab>=4.1,<5.0
+
+# --- optional dev helpers ----------------------------------------------------
+pre-commit>=3.7,<4.0   # lint & formatter hook runner
