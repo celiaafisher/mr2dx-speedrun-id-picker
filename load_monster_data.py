@@ -29,6 +29,10 @@ def load_monster_data(part1_path="en_sqlout_1.csv", part2_path="en_sqlout_2.csv"
         inplace=True,
     )
 
+    # Add additional training information used in speedrun notes
+    df["WeeksAvail"] = df["Lifespan"].clip(upper=104)
+    df["HeavyCycles"] = (df["WeeksAvail"] // 4).astype(int)
+
     return df
 
 
